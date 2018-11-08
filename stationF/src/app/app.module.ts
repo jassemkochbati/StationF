@@ -7,7 +7,13 @@ import {HomeComponent} from './components/home/home.component';
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap/modal/modal.module';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {ButtonModule, DialogModule, InputTextModule} from 'primeng/primeng';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {BsDatepickerModule} from 'ngx-bootstrap';
+import {ReservationService} from './services/reservation.service';
+import {RoomService} from './services/room.service';
 
 @NgModule({
   declarations: [
@@ -20,11 +26,21 @@ import {FormsModule} from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     NgbModalModule.forRoot(),
     BrowserModule,
+    InputTextModule,
+    DialogModule,
+    ButtonModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
     FormsModule
   ],
-  providers: [],
+  providers: [
+    ReservationService,
+    RoomService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
