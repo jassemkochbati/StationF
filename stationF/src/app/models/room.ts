@@ -1,9 +1,11 @@
+import {Equipement} from './equipement';
+
 export class Room {
-  id: String;
-  name: String;
-  description: String;
+  id: string;
+  name: string;
+  description: string;
   capacity: Number;
-  equipements: String[];
-  createdAt: String;
-  updatedAt: String;
+  equipements: Equipement[];
+  createdAt: string;
+  updatedAt: string;
 }

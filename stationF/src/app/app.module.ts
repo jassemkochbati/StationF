@@ -14,6 +14,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BsDatepickerModule} from 'ngx-bootstrap';
 import {ReservationService} from './services/reservation.service';
 import {RoomService} from './services/room.service';
+import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import {RoomService} from './services/room.service';
     DialogModule,
     ButtonModule,
     BrowserAnimationsModule,
+    NgMultiSelectDropDownModule.forRoot(),
     BsDatepickerModule.forRoot(),
     FormsModule
   ],

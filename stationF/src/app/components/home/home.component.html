@@ -37,12 +37,23 @@
             >
 
         </td>
-        <input style="margin-top:7px;" type="text" class="form-control" placeholder="Enter ..." [(ngModel)]="capacite" [ngModelOptions]="{standalone: true}">
+        <input style="margin-top:7px;" type="number" class="form-control" placeholder="Enter ..." [(ngModel)]="capacite" [ngModelOptions]="{standalone: true}">
+        <!-- MultiSelect  -->
         <td>
-          <select class="form-control" [(ngModel)]="equipements">
-            <option></option>
-          </select>
-
+        <ng-multiselect-dropdown
+          [placeholder]="'Enter Equipements'"
+          [data]="dropdownList"
+          [(ngModel)]="selectedItems"
+          [settings]="dropdownSettings"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+          (onDeSelectAll)="OnDeSelectAll($event)"
+        >
+        </ng-multiselect-dropdown>
+        </td>
+        <!-- /MultiSelect  -->
+        <td>
+          <button type="submit" class="btn btn-block btn-primary Flat .btn-flat " (click)="fillRooms();">Filtrer</button>
         </td>
       </tbody>
 
@@ -50,25 +61,22 @@
     <!---------------------->
 
     <!-- ./col -->
-    <div class="col-lg-3 col-xs-6"  *ngFor="let room of rooms;">
+    <div class="col-lg-3 col-xs-6"  *ngFor="let room of filtredRooms;">
       <!-- small box -->
       <div class="small-box bg-red">
-        <div class="box-tools pull-right">
 
-
-          <button type="button" class="btn btn-box-tool"><i class="fa fa-times" ></i></button>
-        </div>
         <div class="inner">
 
-          <h2>{{ room.name}}</h2>
-
+          <h2>{{ room.capacity}}</h2>
+          <p>{{ room.name }}</p>
         </div>
         <div class="icon">
           <i class="ion ion-pie-graph"></i>
         </div>
-        <a class="small-box-footer">
+        <a class="small-box-footer" (click)="reservation.idRoom = room.id; createReservation();">
           Réserver <i class="fa fa-arrow-circle-right"></i>
         </a>
+
       </div>
     </div>
   </section>

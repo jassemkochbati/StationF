@@ -13,7 +13,7 @@ router.get("", (req, res, next) => {
     });
   });
 });
-
+//Getting a room by Id
 router.get("/:id", (req, res, next) => {
   Room.findById(req.params.id).then(post => {
     if (post) {

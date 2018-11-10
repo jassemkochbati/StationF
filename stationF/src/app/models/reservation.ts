@@ -1,5 +1,6 @@
 export class Reservation{
-  idRoom: String;
-  beginDate: String;
-  endDate: String;
+  id: string
+  idRoom: string;
+  beginDate: string;
+  endDate: string;
 }
