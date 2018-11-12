@@ -1,5 +1,5 @@
 const express = require('express');
-
+var fs = require('fs');
 //Importing the Reservation model
 const Reservation = require('../models/reservation');
 
@@ -17,8 +17,16 @@ router.post('/create', (req, res, next) => {
             message: 'Room Reserved Successfully',
             reservationId: newReservation._id
         });
+
+        fs.access('./reservation.json', fs.F_OK, (err) => {
+              if (err) {
+                  fs.writeFile("reservation.json", newReservation);
+                }
+                  fs.appendFile("reservation.json", newReservation);
+              })
+            });
     });
-});
+
 
 //Get the reservations in the database
 router.get('/list', (req, res, next) => {

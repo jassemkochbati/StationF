@@ -41,12 +41,10 @@ export class HomeComponent implements OnInit {
     this.roomsSub = this.roomService.getRoomUpdateListener().subscribe((rooms: Room[]) => {
       this.isLoading = false;
       this.rooms = rooms;
-      console.log(this.rooms);
     });
     this.reservationSub = this.reservationService.getReservationUpdateListener().subscribe( (reservations: Reservation[]) =>{
       this.isLoading = false;
       this.reservations = reservations;
-      console.log(this.reservations);
     });
 // MultiSelect init
     this.dropdownList = [
@@ -80,7 +78,7 @@ export class HomeComponent implements OnInit {
     this.reservation.beginDate=String(this.reservation.beginDate).valueOf();
     this.reservation.endDate=String(this.reservation.endDate).valueOf();
     this.reservationService.createReservation(this.reservation);
-    console.log(this.reservation);
+    window.location.reload();
   }
 
   // show rooms after verification
